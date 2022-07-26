@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="ripple.css">
+  <link rel="stylesheet" href="index.css">
+  <script src="ripple.js" defer></script>
+  <script src="index.js" defer></script>
+  <title>Ripple</title>
+</head>
+<body>
+  <h1>Ripple examples</h1>
+  <div class="flex">
+	  <div ripple>
+	    <span class="text">Simple</span>
+  	</div>
+  	<div ripple ripple-fade-delay="600" ripple-fade-time="250" ripple-remove-delay="850">
+	    <span class="text">Expand, then fade</span>
+  	</div>
+  	<div ripple ripple-expand-style="cubic-bezier(.12,.69,.8,.32)">
+	    <span class="text">Little pause ripple</span>
+  	</div>
+  	<div ripple ripple-fade-delay="250" ripple-expand-delay="250" ripple-remove-delay="1250">
+	    <span class="text">Delay ripple</span>
+  	</div>
+	  <div ripple ripple-disabled>
+	    <span class="text">Disabled</span>
+  	</div>
+  	<div ripple ripple-centered>
+	    <span class="text">Centered</span>
+  	</div>
+	  <div ripple class="unbounded">
+  	  <span class="text">Unbounded</span>
+  	</div>
+	  <div ripple ripple-bg="rgba(255,0,0,.5)">
+  	  <span class="text">Colored</span>
+  	</div>
+  	<div ripple ripple-fade-time="1500" ripple-expand-time="1000" ripple-remove-delay="1500">
+	    <span class="text">Slow</span>
+	  </div>
+  	<div ripple ripple-fade-time="500" ripple-expand-time="250" ripple-remove-delay="500">
+  	  <span class="text">Fast</span>
+  	</div>
+  	<div ripple ripple-radius="50" ripple-fade-time="500" ripple-remove-delay="500">
+	    <span class="text">Defined radius</span>
+  	</div>
+	</div>
+</body>
+</html>
