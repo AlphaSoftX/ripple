@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        outline: none;
+        box-sizing: border-box;
+        font-family: Sans-Serif;
+      }
+      body {
+        padding: 10px;
+      }
+
+      h1 {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      div.flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      div.flex > * ~ * {
+        margin-top: 10px;
+      }
+
+      div.flex > * {
+        width: 300px;
+        height: 200px;
+        background-color: white;
+        display: grid;
+        place-items: center;
+        font-size: 20px;
+        border: 1px solid black;
+      }
+      div.flex > button {
+        height: 100px;
+        color: white;
+        background-color: black;
+        cursor: pointer;
+      }
+    </style>
+    <title>RippleJS</title>
+  </head>
+  <body>
+    <h1>Ripple examples</h1>
+    <div class="flex">
+      <div ripple1>
+        <span class="text">Simple</span>
+      </div>
+      <div ripple2>
+        <span class="text">Expand, then fade</span>
+      </div>
+      <div ripple3>
+        <span class="text">Little pause ripple</span>
+      </div>
+      <div ripple4>
+        <span class="text">Delay ripple</span>
+      </div>
+      <div ripple5 class="no-pointer">
+        <span class="text">Disabled(Right click toggle)</span>
+      </div>
+      <div ripple6>
+        <span class="text">Centered</span>
+      </div>
+      <div ripple7>
+        <span class="text">Multi = false</span>
+      </div>
+      <div ripple8>
+        <span class="text">Event = "mouseup"</span>
+      </div>
+      <div ripple9 class="unbounded">
+        <span class="text">Unbounded</span>
+      </div>
+      <div ripple10>
+        <span class="text">Colored</span>
+      </div>
+      <div ripple11>
+        <span class="text">Slow</span>
+      </div>
+      <div ripple12>
+        <span class="text">Fast</span>
+      </div>
+      <div ripple13>
+        <span class="text">Defined radius</span>
+      </div>
+      <div ripple14 class="no-pointer">
+        <span class="text">Trigger using button only</span>
+      </div>
+      <button>Trigger Button</button>
+    </div>
+    <script src="ripple.js"></script>
+    <script>
+      var select = function (str) {
+        return Array.from(document.querySelectorAll(str));
+      };
+
+      ripplejs.settings.color = "rgba(0,0,0,.2)";
+
+      ripplejs.ripple(select("div[ripple1]"), {});
+      ripplejs.ripple(select("div[ripple2]"), {
+        fadeTime: 250,
+        fadeDelay: 600,
+        removeDelay: 850,
+      });
+      ripplejs.ripple(select("div[ripple3]"), {
+        growStyle: "cubic-bezier(.12,.69,.8,.32)",
+      });
+      ripplejs.ripple(select("div[ripple4]"), {
+        fadeDelay: 250,
+        growDelay: 250,
+        removeDelay: 1250,
+      });
+      ripplejs.ripple(select("div[ripple5]"), { disabled: true });
+      select("div[ripple5]")[0].addEventListener("contextmenu", function (e) {
+        this.rippleSettings.disabled = !this.rippleSettings.disabled;
+        this.classList.toggle("no-pointer");
+        e.preventDefault();
+      });
+      ripplejs.ripple(select("div[ripple6]"), { centered: true });
+      ripplejs.ripple(select("div[ripple7]"), { multi: false });
+      ripplejs.ripple(select("div[ripple8]"), { event: "mouseup" });
+      ripplejs.ripple(select("div[ripple9]"), {});
+      ripplejs.ripple(select("div[ripple10]"), { color: "rgba(255,0,0,.5)" });
+      ripplejs.ripple(select("div[ripple11]"), {
+        fadeTime: 1500,
+        growTime: 1000,
+        removeDelay: 1500,
+      });
+      ripplejs.ripple(select("div[ripple12]"), {
+        fadeTime: 500,
+        growTime: 250,
+        removeDelay: 500,
+      });
+      ripplejs.ripple(select("div[ripple13]"), {
+        radius: 50,
+        fadeTime: 500,
+        removeDelay: 500,
+      });
+      ripplejs.ripple(select("div[ripple14]"), { event: "" });
+      select("button")[0].addEventListener("click", function () {
+        ripplejs.ripple(select("div[ripple14]"));
+      });
+    </script>
+  </body>
+</html>
